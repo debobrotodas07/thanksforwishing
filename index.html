@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for the Birthday Wishes!</title>
+  <style>
+    :root {
+      --bg-color: #0d0f18;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --pink-neon: #ff007f;
+      --bkash-pink: #e2136e;
+      --cyan-neon: #00f3ff;
+      --text-color: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* Background Animations */
+    .bg-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--pink-neon) 0%, transparent 70%);
+      opacity: 0.3;
+      filter: blur(80px);
+      top: 10%;
+      left: 15%;
+      animation: floatGlow 8s infinite alternate ease-in-out;
+    }
+
+    .bg-glow-2 {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, var(--cyan-neon) 0%, transparent 70%);
+      opacity: 0.25;
+      filter: blur(80px);
+      bottom: 10%;
+      right: 15%;
+      animation: floatGlow 10s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 50px) scale(1.2); }
+    }
+
+    /* Main Container */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 900px;
+      width: 100%;
+      justify-content: center;
+      align-items: stretch;
+      z-index: 2;
+      margin-bottom: 40px;
+    }
+
+    /* Aesthetic Card Base */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      flex: 1 1 380px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px 0 rgba(226, 19, 110, 0.2);
+    }
+
+    /* Message Styling */
+    .thank-you-card h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #ff758c, #ff7eb3, #00f3ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+      animation: titleGlow 3s infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      0% { filter: drop-shadow(0 0 2px rgba(255,117,140,0.5)); }
+      100% { filter: drop-shadow(0 0 10px rgba(0,243,255,0.8)); }
+    }
+
+    .thank-you-card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #d1d5db;
+    }
+
+    /* bKash Card Styling */
+    .bkash-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Neon bKash Logo */
+    .bkash-neon-logo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid var(--bkash-pink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #fff;
+      text-transform: lowercase;
+      box-shadow: 0 0 15px var(--bkash-pink), inset 0 0 15px var(--bkash-pink);
+      text-shadow: 0 0 8px #fff, 0 0 15px var(--bkash-pink);
+      margin-bottom: 20px;
+      animation: neonPulse 2s infinite alternate;
+    }
+
+    @keyframes neonPulse {
+      0% {
+        box-shadow: 0 0 10px var(--bkash-pink), inset 0 0 10px var(--bkash-pink);
+      }
+      100% {
+        box-shadow: 0 0 25px var(--bkash-pink), 0 0 35px var(--bkash-pink), inset 0 0 15px var(--bkash-pink);
+      }
+    }
+
+    .bkash-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .number-box {
+      background: rgba(226, 19, 110, 0.15);
+      border: 1px dashed var(--bkash-pink);
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #ff85c0;
+      margin-top: 10px;
+      text-shadow: 0 0 5px rgba(226, 19, 110, 0.5);
+    }
+
+    /* Gift Button Section */
+    .gift-section {
+      z-index: 2;
+      text-align: center;
+    }
+
+    .gift-btn {
+      background: linear-gradient(135deg, var(--pink-neon), var(--cyan-neon));
+      border: none;
+      color: #fff;
+      padding: 16px 35px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .gift-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 35px rgba(0, 243, 255, 0.8);
+    }
+
+    .gift-btn:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+  <div class="bg-glow-2"></div>
+
+  <div class="container">
+    <div class="card thank-you-card">
+      <h1>Thank You! ✨</h1>
+      <p>Your birthday wishes made my day super special! Thank you so much for taking the time to wish me. I truly appreciate your love and presence in my life!</p>
+    </div>
+
+    <div class="card bkash-card">
+      <div class="bkash-neon-logo">bKash</div>
+      <h2>Treat Send Kortobbe! 💸</h2>
+      <p>If you feel like turning those sweet wishes into a sweet treat:</p>
+      <div class="number-box">Bkash Number: 01764036235</div>
+    </div>
+  </div>
+
+  <div class="gift-section">
+    <button class="gift-btn" onclick="playFahhSound()">🎁 Here Is The Return Gift!</button>
+  </div>
+
+  <script>
+    // Web Audio API synth to generate a loud, clear sound dynamically without external audio file errors
+    function playFahhSound() {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      const ctx = new AudioContext();
+
+      // Create noise buffer for vocal friction ("Fff")
+      const bufferSize = ctx.sampleRate * 0.7; // 0.7 seconds duration
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      // Filter to shape noise into a vocal formant ("AHHH")
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(800, ctx.currentTime);
+      filter.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.6);
+      filter.Q.setValueAtTime(3, ctx.currentTime);
+
+      // Main Oscillator for voice pitch
+      const osc = ctx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(350, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.6);
+
+      // Master Volume Envelope for dynamic punch
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.01, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(1.0, ctx.currentTime + 0.05); // Attack
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.65); // Decay
+
+      // Connect components
+      noise.connect(filter);
+      filter.connect(gain);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      // Play sound
+      noise.start(ctx.currentTime);
+      osc.start(ctx.currentTime);
+      noise.stop(ctx.currentTime + 0.7);
+      osc.stop(ctx.currentTime + 0.7);
+    }
+  </script>
+</body>
+</html>
